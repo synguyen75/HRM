@@ -12,7 +12,7 @@ class TaiKhoan extends Authenticate
     use Notifiable;
     protected $table = 'tai_khoans';
     protected $fillable = [
-        'email', 'mat_khau',
+        'ten_tai_khoan', 'mat_khau',
     ];
     protected $hidden = [
         'mat_khau', 'remember_token',
@@ -21,4 +21,8 @@ class TaiKhoan extends Authenticate
     {
         return $this->mat_khau;
     }
+    // public function getAuthIdentifierName()
+    // {
+    //     return 'ten_tai_khoan';
+    // }
 }

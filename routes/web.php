@@ -13,7 +13,8 @@ use App\Http\Controllers\TaiKhoanController;
 use App\Http\Controllers\DashBroadController;
 use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\NhomNhanVienController;
-
+use App\Http\Controllers\ResetpassController;
+use App\Http\Controllers\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +43,10 @@ Route::middleware('admin')->group(function () {
 Route::post('login', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::prefix('password')->group(function () {
+    Route::get('reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/reset/{token}', [ResetpassController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset', [ResetpassController::class, 'reset'])->name('password.update');
+});

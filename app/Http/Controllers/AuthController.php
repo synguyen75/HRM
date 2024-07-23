@@ -15,12 +15,11 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
+        $credentials = $request->only('ten_tai_khoan', 'password');
+        // $credentials = ['ten_tai_khoan' => 'sy123', 'password' => 'password'];
         if (Auth::guard('tai_khoan')->attempt($credentials)) {
             return redirect()->route('dashbroad');
         }
-
         return redirect()->back()->with('errors', 'Email hoặc mật khẩu không đúng');
     }
 
@@ -28,5 +27,8 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('login')->with('success', 'Đăng xuất thành công');
+    }
+    function forgotPassword()
+    {
     }
 }
