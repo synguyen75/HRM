@@ -43,4 +43,12 @@ class NhanVien extends Model
     {
         return  DB::table('nhan_viens')->where('id', $id)->delete();
     }
+    function phongBan()
+    {
+        return $this->belongsTo(PhongBan::class, 'id_phong_ban');
+    }
+    function chucVu()
+    {
+        return $this->belongsTo(ChucVu::class, 'id_chuc_vus');
+    }
 }

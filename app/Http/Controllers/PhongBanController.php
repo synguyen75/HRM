@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NhanVien;
 use App\Models\PhongBan;
 use Illuminate\Http\Request;
 

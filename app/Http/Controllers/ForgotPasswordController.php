@@ -14,7 +14,9 @@ class ForgotPasswordController extends Controller
     }
     function sendResetLinkEmail(Request $request)
     {
-        $request->validate(['email' => 'required|email']);
+        $request->validate(['email' => 'required|email|exists:tai_khoans,email'], [
+            'email.exists' => 'Email của bạn chưa đăng ký tài khoản'
+        ]);
 
         // sử dụng nếu chưa cài đặt ở auth
         // $status = Password::broker('tai_khoans')->sendResetLink(
@@ -25,7 +27,7 @@ class ForgotPasswordController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
+            ? back()->with(['status' => "Gửi email thành công"])
             : back()->withErrors(['email' => __($status)]);
     }
 }

@@ -12,19 +12,26 @@ class ResetpassController extends Controller
 {
     protected $redirectTo = '/home';
 
-    public function showResetForm($token)
+    public function showResetForm($token, Request $request)
     {
-        return view('auth.passwords.reset', ['token' => $token]);
+        $email = $request->email;
+        return view('auth.passwords.reset', ['token' => $token, 'email' => $email]);
     }
 
     public function reset(Request $request)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-        ]);
-
+        $request->validate(
+            [
+                'token' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:8|confirmed',
+            ],
+            [
+                'password.min' => 'Mật khẩu yêu cầu ít nhất 8 ký tự',
+                'password.confirmed' => 'Mật khẩu xác thực không đúng'
+            ]
+        );
+        // dd($request);
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
@@ -38,7 +45,7 @@ class ResetpassController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-            ? redirect()->route('login')->with('status', __($status))
+            ? redirect()->route('login')->with('success', 'Đổi mật khẩu thành công')
             : back()->withErrors(['email' => [__($status)]]);
     }
 }

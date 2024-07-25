@@ -34,9 +34,9 @@
                     <td>{{ $item->ngay_cong }} Ngày</td>
                     <td>{{ $item->muc_luong }} VNĐ</td>
                     <td>{{ $item->ngay_hieu_luc }}</td>
-
                     <td>
-                        <a href="{{ route('luong.edit', $item->id) }}" class="btn btn-warning">Sửa</a>
+                        <a href="{{ route('luong.edit', $item->id) }}" class="btn btn-warning"><i class="pe-7s-pen"
+                                style="font-weight: bolder; font-size: 15px"></i></a>
                         {{-- <form action="{{ route('luong.destroy', $item->id) }}"
                             onsubmit="return confirm('Bạn thực sự muốn xóa ?')" method="post" style="display: inline;">
                             @csrf

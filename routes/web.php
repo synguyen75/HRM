@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Automattic\Jetpack\Blaze\Dashboard;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LuongController;
 use App\Http\Controllers\ChucVuController;
@@ -15,6 +13,8 @@ use App\Http\Controllers\KhenThuongController;
 use App\Http\Controllers\NhomNhanVienController;
 use App\Http\Controllers\ResetpassController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ThanhVienController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +33,7 @@ Route::middleware('admin')->group(function () {
     Route::resource('khenthuong', KhenThuongController::class);
     Route::resource('kyluat', KyLuatController::class);
     Route::resource('nhom', NhomNhanVienController::class);
+    Route::resource('nhom/thanhvien', ThanhVienController::class);
     Route::resource('phongban', PhongBanController::class);
     Route::resource('taikhoan', TaiKhoanController::class);
     Route::get('luong/{id}', [LuongController::class, 'index'])->name('luong.get');

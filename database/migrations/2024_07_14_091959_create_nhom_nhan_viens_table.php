@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('cong_viec');
             $table->text('mo_ta')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('id_nhan_vien')->nullable(); // Tạo cột id_phong_ban là khóa ngoại
-            $table->foreign('id_nhan_vien')->references('id')->on('nhan_viens')->onDelete('set null');
         });
     }
 

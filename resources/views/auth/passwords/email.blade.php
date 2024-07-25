@@ -6,7 +6,12 @@
             @csrf
             <h1>Đặt lại mật khẩu</h1>
             @if (session('status'))
-                <div class="errors" style=" color: green">{{ session('status') }}</div>
+                <div class="errors" style=" color: green;margin-top: 50px">{{ session('status') }}</div>
+            @endif
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="errors" style=" color: rgb(255, 47, 47); margin-top: 50px">{{ $error }}</div>
+                @endforeach
             @endif
             <div class="flex-column">
                 <label>Email </label>
@@ -22,8 +27,9 @@
                 <input type="text" id="email" class="input" value="{{ old('email') }}" name="email"
                     placeholder="Nhập email" required autocomplete="email" autofocus>
             </div>
+            <span class="span"><a href="{{ route('login') }}" style="text-decoration: none">Đăng
+                    nhập</a></span>
             <button class="button-submit" type="submit">Gửi Mail</button>
-
         </form>
 
     </div>

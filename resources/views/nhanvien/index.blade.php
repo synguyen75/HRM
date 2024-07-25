@@ -54,12 +54,14 @@
                     </td>
                     <td style="font-size: x-large"><a href="{{ route('luong.get', $item->id) }}">👁️‍🗨️</a></td>
                     <td>
-                        <a href="{{ route('nhanvien.edit', $item->id) }}" class="btn btn-warning">Sửa</a>
+                        <a href="{{ route('nhanvien.edit', $item->id) }}" class="btn btn-warning"><i class="pe-7s-pen"
+                                style="font-weight: bolder; font-size: 15px"></i></a>
                         <form action="{{ route('nhanvien.destroy', $item->id) }}"
                             onsubmit="return confirm('Bạn thực sự muốn xóa ?')" method="post" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Xóa</button>
+                            <button type="submit" class="btn btn-danger"><i style="font-weight: bolder; font-size: 15px"
+                                    class="pe-7s-trash"></i></button>
                         </form>
                     </td>
                 </tr>

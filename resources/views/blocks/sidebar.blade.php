@@ -24,7 +24,7 @@ Tip 2: you can also add an image using data-image tag
             </li>
             <li @if (request()->is('nhanvien/*') || request()->is('nhanvien')) class="active" @endif>
                 <a href="{{ route('nhanvien.index') }}">
-                    <i class="pe-7s-user"></i>
+                    <i class="pe-7s-id"></i>
                     <p>Nhân viên</p>
                 </a>
             </li>
@@ -36,31 +36,31 @@ Tip 2: you can also add an image using data-image tag
             </li>
             <li @if (request()->is('phongban/*') || request()->path() == 'phongban') class="active" @endif>
                 <a href="{{ route('phongban.index') }}">
-                    <i class="pe-7s-leaf"></i>
+                    <i class="pe-7s-network"></i>
                     <p>Phòng ban</p>
                 </a>
             </li>
             <li @if (request()->is('nhom/*') || request()->path() == 'nhom') class="active" @endif>
                 <a href="{{ route('nhom.index') }}">
-                    <i class="pe-7s-note2"></i>
+                    <i class="pe-7s-users"></i>
                     <p>Nhóm</p>
                 </a>
             </li>
             <li @if (request()->is('khenthuong/*') || request()->path() == 'khenthuong') class="active" @endif>
                 <a href="{{ route('khenthuong.index') }}">
-                    <i class="pe-7s-leaf"></i>
+                    <i class="pe-7s-medal"></i>
                     <p>Khen thưởng</p>
                 </a>
             </li>
             <li @if (request()->is('kyluat/*') || request()->path() == 'kyluat') class="active" @endif>
                 <a href="{{ route('kyluat.index') }}">
-                    <i class="pe-7s-leaf"></i>
+                    <i class="pe-7s-attention"></i>
                     <p>Kỷ luật</p>
                 </a>
             </li>
             <li @if (request()->is('taikhoan/*') || request()->path() == 'taikhoan') class="active" @endif>
                 <a href="{{ route('taikhoan.index') }}">
-                    <i class="pe-7s-leaf"></i>
+                    <i class="pe-7s-user"></i>
                     <p>Tài khoản</p>
                 </a>
             </li>

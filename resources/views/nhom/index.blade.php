@@ -10,14 +10,16 @@
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <a href="{{ route('chucvu.create') }}" style="margin-bottom: 10px" class="btn btn-warning">Thêm chức vụ</a>
+    <a href="{{ route('nhom.create') }}" style="margin-bottom: 10px" class="btn btn-warning">Thêm nhóm</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
                 {{-- <th scope="col">STT</th> --}}
                 <th scope="col">ID</th>
-                <th scope="col">Tên chức vụ</th>
+                <th scope="col">Tên nhóm</th>
+                <th scope="col">Công việc</th>
                 <th scope="col">Mô tả</th>
+                <th scope="col">Xem thành viên</th>
                 <th scope="col">Chức năng</th>
             </tr>
         </thead>
@@ -31,12 +33,14 @@
                 <tr>
                     {{-- <th scope="row">{{ (int) $key + 1 + $start }}</th> --}}
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->ten_chuc_vu }}</td>
+                    <td>{{ $item->ten_nhom }}</td>
+                    <td>{{ $item->cong_viec }}</td>
                     <td>{{ $item->mo_ta }}</td>
+                    <td style="font-size: x-large"><a href="{{ route('thanhvien.show', $item->id) }}">👁️‍🗨️</a></td>
                     <td>
-                        <a href="{{ route('chucvu.edit', $item->id) }}" class="btn btn-warning"><i class="pe-7s-pen"
+                        <a href="{{ route('nhom.edit', $item->id) }}" class="btn btn-warning"><i class="pe-7s-pen"
                                 style="font-weight: bolder; font-size: 15px"></i></a>
-                        <form action="{{ route('chucvu.destroy', $item->id) }}"
+                        <form action="{{ route('nhom.destroy', $item->id) }}"
                             onsubmit="return confirm('Bạn thực sự muốn xóa ?')" method="post" style="display: inline;">
                             @csrf
                             @method('DELETE')

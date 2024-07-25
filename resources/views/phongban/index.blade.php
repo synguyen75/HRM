@@ -32,12 +32,14 @@
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->ten_phong_ban }}</td>
                     <td>
-                        <a href="{{ route('phongban.edit', $item->id) }}" class="btn btn-warning">Sửa</a>
+                        <a href="{{ route('phongban.edit', $item->id) }}" class="btn btn-warning"><i class="pe-7s-pen"
+                                style="font-weight: bolder; font-size: 15px"></i></a>
                         <form action="{{ route('phongban.destroy', $item->id) }}"
                             onsubmit="return confirm('Bạn thực sự muốn xóa ?')" method="post" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Xóa</button>
+                            <button type="submit" class="btn btn-danger"><i class="pe-7s-trash"
+                                    style="font-weight: bolder; font-size: 15px"></i></button>
                         </form>
                     </td>
                 </tr>
