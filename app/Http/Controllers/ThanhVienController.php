@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ThanhVienRequest;
+use App\Models\NhanVien;
 use App\Models\NhomNhanVien;
 use App\Models\ThanhVien;
 use Illuminate\Http\Request;
@@ -53,6 +55,9 @@ class ThanhVienController extends Controller
     {
         $data = [];
         $data['nhom'] = NhomNhanVien::find($id);
+        $data['nhanvien'] = NhanVien::all()
+            ->select('id', 'ho_ten');
+        // dd($data);
         $data['title'] = 'Trang thêm thành viên';
         return view('thanhvien.create', $data);
     }
@@ -60,7 +65,7 @@ class ThanhVienController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ThanhVienRequest $request, string $id)
     {
         $data = $request->except('_token', '_method');
         // dd($data);

@@ -20,7 +20,7 @@
                     </path>
                 </g>
             </svg>
-            <input type="text" class="input" name="email" placeholder="Nhập email">
+            <input type="text" class="input" value="{{ old('email') }}" name="email" placeholder="Nhập email">
         </div>
 
         <div class="flex-column">
